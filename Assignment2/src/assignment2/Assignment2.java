@@ -18,22 +18,32 @@ public class Assignment2 {
         // TODO code application logic here
        int intArray[] = new int[]{5,90,35,45,150,3,9,11,80,50,75,12,41,100,112,95,32,64,16,8};
                
-                //print array before sorting using bubble sort algorithm
-                System.out.println("Array Before Bubble Sort");
-                for(int i=0; i < intArray.length; i++){
-                        System.out.print(intArray[i] + " ");
-                }
+                //print unsorted array
+                System.out.println("Unsorted Array");
+                for(int i=0; i < intArray.length; i++)
+                    System.out.print(intArray[i] + " ");
+                
                
                 //sort an array using bubble sort algorithm
-                BubbleSort(intArray);
+                //BubbleSort(intArray);
                
                 System.out.println("");
                
-                //print array after sorting using bubble sort algorithm
-                System.out.println("Array After Bubble Sort");
-                for(int i=0; i < intArray.length; i++){
-                        System.out.print(intArray[i] + " ");
-                }
+//                //print array after sorting using bubble sort algorithm
+//                System.out.println("Array After Bubble Sort");
+//                for(int i=0; i < intArray.length; i++)
+//                    System.out.print(intArray[i] + " ");
+               
+                BST bst = new BST();
+                
+                for(int i=0; i < intArray.length; i++)
+                    bst.insert(intArray[i]);
+                
+                //print binary search tree in in-order traversal
+                System.out.println("Inorder Traversal");
+                bst.printInorder();
+                
+                
     }
     
      public static void BubbleSort( int [ ] num )
@@ -57,6 +67,8 @@ public class Assignment2 {
             } 
       } 
     } 
+     
+     
 }
     
    
