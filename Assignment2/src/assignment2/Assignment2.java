@@ -23,7 +23,6 @@ public class Assignment2 {
                 for(int i=0; i < intArray.length; i++)
                     System.out.print(intArray[i] + " ");
                 
-               
                 //sort an array using bubble sort algorithm
                 //BubbleSort(intArray);
                
@@ -41,9 +40,7 @@ public class Assignment2 {
                 
                 //print binary search tree in in-order traversal
                 System.out.println("Inorder Traversal");
-                bst.printInorder();
-                
-                
+                bst.printInorder();          
     }
     
      public static void BubbleSort( int [ ] num )
