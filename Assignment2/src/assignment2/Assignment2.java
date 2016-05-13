@@ -152,14 +152,11 @@ public class Assignment2 {
          for(int i = 0; i < arr3.length; i++)
              System.out.print(arr3[i] + " ");
          
+         System.out.print("\nSorted Array \n");
          long startTime4 = System.currentTimeMillis();
          bst3.printInorder();
          long endTime4 = System.currentTimeMillis();
         System.out.println("\nThat took " + (endTime4 - startTime4) + " milliseconds");
-        
-         System.out.print("\nSorted array ");
-         for(int i = 0; i < arr3.length; i++)
-            System.out.print(arr3[i] + " ");
         
          System.out.print("\nComparisons: " + comparisons);
          comparisons = 0;
@@ -169,14 +166,13 @@ public class Assignment2 {
          for(int i = 0; i < arr4.length; i++)
              System.out.print(arr4[i] + " ");
          
+         System.out.print("\nSorted Array \n");
          long startTime5 = System.currentTimeMillis();
          bst4.printInorder();
          long endTime5 = System.currentTimeMillis();
         System.out.println("\nThat took " + (endTime5 - startTime5) + " milliseconds");
         
-         System.out.print("\nSorted array ");
-         for(int i = 0; i < arr4.length; i++)
-            System.out.print(arr4[i] + " ");
+      
         
          System.out.print("\nComparisons: " + comparisons);
          comparisons = 0;
@@ -186,14 +182,12 @@ public class Assignment2 {
          for(int i = 0; i < arr5.length; i++)
              System.out.print(arr5[i] + " ");
          
+         System.out.print("\nSorted Array \n");
          long startTime6 = System.currentTimeMillis();
          bst5.printInorder();
          long endTime6 = System.currentTimeMillis();
         System.out.println("\nThat took " + (endTime6 - startTime6) + " milliseconds");
         
-         System.out.print("\nSorted array ");
-         for(int i = 0; i < arr5.length; i++)
-            System.out.print(arr5[i] + " ");
         
          System.out.print("\nComparisons: " + comparisons + "\n");
          comparisons = 0;
