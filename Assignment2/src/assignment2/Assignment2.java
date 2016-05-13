@@ -8,8 +8,10 @@ import static assignment2.Sorting.BubbleSort;
 import static assignment2.Sorting.SelectionSort;
 import static assignment2.Sorting.InsertionSort;
 import static assignment2.Sorting.MergeSort;
+import static assignment2.Sorting.Quicksort;
 import java.util.Random;
 import java.util.ArrayList;
+import static java.util.Arrays.sort;
 
 /**
  *
@@ -81,49 +83,66 @@ public class Assignment2 {
          
          generator.nextInt(max);
          
+         BST bst1 = new BST();
+         BST bst2 = new BST();
+         BST bst3 = new BST();
+         BST bst4 = new BST();
+         BST bst5 = new BST();
          //populate each array
-         for(int i = 0; i < size1; i++)
-             arr[i] = generator.nextInt(max);   
-         for(int i = 0; i < size2; i++)
+         for(int i = 0; i < size1; i++){
+             arr[i] = generator.nextInt(max); 
+             bst1.insert(arr[i]);
+         }  
+         for(int i = 0; i < size2; i++){
              arr2[i] = generator.nextInt(max);
-         for(int i = 0; i < size3; i++)
+             bst2.insert(arr2[i]);
+         }
+         for(int i = 0; i < size3; i++){
              arr3[i] = generator.nextInt(max);
-         for(int i = 0; i < size4; i++)
+             bst3.insert(arr3[i]);
+         }
+         for(int i = 0; i < size4; i++){
              arr4[i] = generator.nextInt(max);
-         for(int i = 0; i < size5; i++)
+             bst4.insert(arr4[i]);
+         }
+         for(int i = 0; i < size5; i++){
              arr5[i] = generator.nextInt(max);
+             bst5.insert(arr5[i]);
+         }
          
          //Array 1
-        System.out.print("Unsorted array ");
+        System.out.print("Unsorted array \n");
         for(int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
         
+        
+        System.out.print("\nSorted Array \n");
         long startTime2 = System.currentTimeMillis();
-         MergeSort(arr);
+         bst1.printInorder();
           long endTime2 = System.currentTimeMillis();
         System.out.println("\nThat took " + (endTime2 - startTime2) + " milliseconds");
         
-         System.out.print("\nSorted array ");
-        for(int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+//         System.out.print("\nSorted array ");
+//         for (int i = 0; i < arr.length; i++) {
+//             System.out.print(arr[i] + " ");
+//         }
          
         System.out.print("\nComparisons: " + comparisons);
         comparisons = 0;
         
         
         //Array 2
-         System.out.print("\n\nUnsorted array ");
+         System.out.print("\n\nUnsorted array \n");
         for(int i = 0; i < arr2.length; i++)
             System.out.print(arr2[i] + " ");
         
+        System.out.print("\nSorted Array \n");
          long startTime3 = System.currentTimeMillis();
-       MergeSort(arr2);
+        bst2.printInorder();
          long endTime3 = System.currentTimeMillis();
         System.out.println("\nThat took " + (endTime3 - startTime3) + " milliseconds");
         
-        System.out.print("\nSorted array ");
-        for(int i = 0; i < arr2.length; i++)
-            System.out.print(arr2[i] + " ");
+       
         
          System.out.print("\nComparisons: " + comparisons);
          comparisons = 0;
@@ -133,9 +152,10 @@ public class Assignment2 {
          for(int i = 0; i < arr3.length; i++)
              System.out.print(arr3[i] + " ");
          
-         
-         MergeSort(arr3);
-         
+         long startTime4 = System.currentTimeMillis();
+         bst3.printInorder();
+         long endTime4 = System.currentTimeMillis();
+        System.out.println("\nThat took " + (endTime4 - startTime4) + " milliseconds");
         
          System.out.print("\nSorted array ");
          for(int i = 0; i < arr3.length; i++)
@@ -149,9 +169,11 @@ public class Assignment2 {
          for(int i = 0; i < arr4.length; i++)
              System.out.print(arr4[i] + " ");
          
-         
-         MergeSort(arr4);
-
+         long startTime5 = System.currentTimeMillis();
+         bst4.printInorder();
+         long endTime5 = System.currentTimeMillis();
+        System.out.println("\nThat took " + (endTime5 - startTime5) + " milliseconds");
+        
          System.out.print("\nSorted array ");
          for(int i = 0; i < arr4.length; i++)
             System.out.print(arr4[i] + " ");
@@ -164,8 +186,11 @@ public class Assignment2 {
          for(int i = 0; i < arr5.length; i++)
              System.out.print(arr5[i] + " ");
          
-         MergeSort(arr5);
-         
+         long startTime6 = System.currentTimeMillis();
+         bst5.printInorder();
+         long endTime6 = System.currentTimeMillis();
+        System.out.println("\nThat took " + (endTime6 - startTime6) + " milliseconds");
+        
          System.out.print("\nSorted array ");
          for(int i = 0; i < arr5.length; i++)
             System.out.print(arr5[i] + " ");

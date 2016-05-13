@@ -5,6 +5,8 @@
  */
 package assignment2;
 
+import static assignment2.Assignment2.comparisons;
+
 /**
  *
  * @author Enrique
@@ -73,6 +75,7 @@ public class BST {
     */
    private void printInOrderRec(Node currRoot)
    {
+       comparisons++;
      if ( currRoot == null ) return;
      
      printInOrderRec(currRoot.left);
