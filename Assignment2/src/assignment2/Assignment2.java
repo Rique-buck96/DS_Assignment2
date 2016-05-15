@@ -5,13 +5,8 @@
  */
 package assignment2;
 import static assignment2.Sorting.BubbleSort;
-import static assignment2.Sorting.SelectionSort;
-import static assignment2.Sorting.InsertionSort;
-import static assignment2.Sorting.MergeSort;
-import static assignment2.Sorting.Quicksort;
+import static assignment2.UnitList.BuildLinkedList;
 import java.util.Random;
-import java.util.ArrayList;
-import static java.util.Arrays.sort;
 
 /**
  *
@@ -28,7 +23,7 @@ public class Assignment2 {
         
        
         //Task 3
-        randArr();
+       BuildLinkedList();
               
     }
     
