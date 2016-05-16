@@ -124,13 +124,20 @@ public class UnitList {
                 prev = curr;
             if(curr.student_ID == id)
             {
-              del = curr.next;
+              del = curr.next;   //if exists, delete student record
               prev.next = del;
             }
         }
-
-        //if exists, delete student record
-
+    }
+    
+    public static void SortDescendingOrder(UnitList u_list){
+        if(u_list == null) return;
+        UnitList prev = null;
+        UnitList newList = null;
+        
+        //traverse SLL in descending order
+       
+            
     }
     public static void BuildLinkedList() {
         int[] unit1 = {1111, 17, 22, 30,
@@ -167,8 +174,14 @@ public class UnitList {
 
         print_unit_result(u_list);
 
+        System.out.println("\nDelete student record: ID: 1116 \n");
         delete_unit_result(u_list, 1116);
 
+        print_unit_result(u_list);
+        
+         System.out.println("\nDisplay list in descending order\n");
+        SortDescendingOrder(u_list);
+        
         print_unit_result(u_list);
     }
 }
