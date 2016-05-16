@@ -70,6 +70,34 @@ public class BST {
      System.out.println("");
    }
 
+   public void printPreorder()
+   {
+       printPreorderRec(root);
+       System.out.println("");
+   }
+   
+   public void printPostorder()
+   {
+       printPostorderRec(root);
+       System.out.println("");
+   }
+   
+  public void printLeafNodes()
+  {
+      printLeafNodesRec(root);
+      System.out.println("");
+  }
+   
+  public void printNonLeafNodes(){
+      printNonLeafNodesRec(root);
+      System.out.println("");
+  }
+  
+  public void printTreeDepth(){
+      
+      System.out.println("Max depth is " + maxDepthRec(root));
+  }
+  
 /**
  * Helper method to recursively print the contents in an inorder way
     */
@@ -82,4 +110,57 @@ public class BST {
      System.out.print(currRoot.value+" ");
      printInOrderRec(currRoot.right);
    }
+   
+   private void printPreorderRec(Node currRoot)
+   {
+       if(currRoot == null) return;
+       
+       System.out.print(currRoot.value + " ");
+       printPreorderRec(currRoot.left);
+       printPreorderRec(currRoot.right);
+   }
+   
+   private void printPostorderRec(Node currRoot)
+   {
+       if (currRoot == null) return;
+       
+       printPostorderRec(currRoot.left);
+       printPostorderRec(currRoot.right);
+       System.out.print(currRoot.value + " ");
+   }
+   
+    private void printLeafNodesRec(Node node){
+       if(node == null) return;
+       
+       if(node.left == null && node.right == null)
+           System.out.print(node.value + " ");
+       
+       printLeafNodesRec(node.left);
+       printLeafNodesRec(node.right);
+   }
+    
+    private void printNonLeafNodesRec(Node node){
+        if(node == null) return;
+        
+        if(node.left != null || node.right != null)
+            System.out.print(node.value + " ");
+        
+        printNonLeafNodesRec(node.left);
+        printNonLeafNodesRec(node.right);
+    }
+    
+    public int maxDepthRec(Node node){
+      if(node == null) return 0;
+      else{
+        int lDepth = maxDepthRec(node.left);
+        int rDepth = maxDepthRec(node.right);
+          
+          if(lDepth > rDepth)
+            return lDepth + 1;
+          
+          else
+            return rDepth + 1;   
+          
+          }
+    }
 }

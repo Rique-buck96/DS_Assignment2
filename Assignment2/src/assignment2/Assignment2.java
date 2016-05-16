@@ -23,8 +23,9 @@ public class Assignment2 {
         
        
         //Task 3
-       BuildLinkedList();
-              
+       //BuildLinkedList();
+         
+       populateComplicatedBST();
     }
     
     public static void populateBSort()
@@ -60,6 +61,38 @@ public class Assignment2 {
         bst.printInorder();         
     }
     
+    public static void populateComplicatedBST()
+    {
+        int Array[] = new int[]{50, 76, 60, 30, 74, 18, 16, 98, 87, 40, 80, 46, 42, 43, 45, 41};
+        BST bst = new BST();
+        
+        for(int i =0; i< Array.length; i++)
+            bst.insert(Array[i]);
+        
+        //print binary search tree inorder
+        System.out.println("Inorder traversal");
+        bst.printInorder();
+        
+        //print preorder
+        System.out.println("\nPreorder traversal");
+        bst.printPreorder();
+        
+        //print postorder
+        System.out.println("\nPostorder traversal");
+        bst.printPostorder();
+        
+        //print leaf nodes
+        System.out.println("\nLeaf nodes");
+        bst.printLeafNodes();
+        
+        //print non leaf nodes
+        System.out.println("\nNon leaf nodes");
+        bst.printNonLeafNodes();
+        
+        //print tree depth
+        System.out.println("\nTree depth");
+        bst.printTreeDepth();
+    }
      public static void randArr()
      {
          int size1 = 200;

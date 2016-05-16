@@ -16,7 +16,7 @@ public class UnitList {
     private int A2_result;      //0<= a2_mark<=30
     private int exam_result;    //0<= a3_mark<=50
     private UnitList next = null;
-   
+    
     private UnitList(int ID, int mark1, int mark2, int mark3) {
         if ((ID < 999) || (ID > 9999)) return;
         if ((mark1 < 0.0) || (mark1 > 20.0)) return;
@@ -131,14 +131,18 @@ public class UnitList {
     }
     
     public static void SortDescendingOrder(UnitList u_list){
-        if(u_list == null) return;
-        UnitList prev = null;
-        UnitList newList = null;
-        
-        //traverse SLL in descending order
-       
-            
+     if(u_list == null) return;
+     UnitList prev = null;
+     
+     while(u_list.next != null){
+         UnitList curr = u_list.next;
+         u_list.next = prev;
+         prev = u_list;
+         u_list = curr;
+     }
+    u_list.next = prev;
     }
+    
     public static void BuildLinkedList() {
         int[] unit1 = {1111, 17, 22, 30,
             1112, 10, 6, 50,
@@ -180,7 +184,7 @@ public class UnitList {
         print_unit_result(u_list);
         
          System.out.println("\nDisplay list in descending order\n");
-        SortDescendingOrder(u_list);
+        //SortDescendingOrder(u_list);
         
         print_unit_result(u_list);
     }
