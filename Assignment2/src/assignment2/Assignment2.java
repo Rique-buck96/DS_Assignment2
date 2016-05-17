@@ -23,9 +23,9 @@ public class Assignment2 {
         
        
         //Task 3
-       //BuildLinkedList();
+       BuildLinkedList();
          
-       populateComplicatedBST();
+       //populateComplicatedBST();
     }
     
     public static void populateBSort()
