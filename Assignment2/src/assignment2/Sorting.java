@@ -6,6 +6,7 @@
 package assignment2;
 
 import static assignment2.Assignment2.comparisons;
+import java.util.Random;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Sorting {
 
     public static void BubbleSort(int[] num) {
         int temp;
+        int comparisons = 0;
         for (int i = 0; i < num.length; i++) {
 
             for (int j = 1; j < num.length; j++) {
@@ -33,14 +35,15 @@ public class Sorting {
                 }
             }
         }
-
+        System.out.print("Sorted Array:\n" + num);
+        System.out.print("\nComparisons:" + comparisons + "\n");
     }
 
     public static void SelectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int index = i;
             for (int j = i + 1; j < arr.length; j++) {
-                comparisons++;
+
                 if (arr[j] < arr[index]) {
                     index = j;
 
@@ -117,62 +120,107 @@ public class Sorting {
         System.arraycopy(second, iSecond, result, j, second.length - iSecond);
     }
 
-        
-
-        public static void Quicksort(int[] values) {
-            // check for empty or null array
-            if (values == null || values.length == 0) {
-                return;
-            }
-            numbers = values;
-            number = values.length;
-            quicksort(0, number - 1);
+    public static void Quicksort(int[] values) {
+        // check for empty or null array
+        if (values == null || values.length == 0) {
+            return;
         }
+        numbers = values;
+        number = values.length;
+        quicksort(0, number - 1);
+    }
 
-        private static void quicksort(int low, int high) {
-            int i = low, j = high;
-            // Get the pivot element from the middle of the list
-            int pivot = numbers[low + (high - low) / 2];
+    private static void quicksort(int low, int high) {
+        int i = low, j = high;
+        // Get the pivot element from the middle of the list
+        int pivot = numbers[low + (high - low) / 2];
 
-            // Divide into two lists
-            while (i <= j) {
-                // If the current value from the left list is smaller then the pivot
-                // element then get the next element from the left list
-                while (numbers[i] < pivot) {
-                    i++;
-                }
-                // If the current value from the right list is larger then the pivot
-                // element then get the next element from the right list
-                while (numbers[j] > pivot) {
-                    j--;
-                }
+        // Divide into two lists
+        while (i <= j) {
 
-                // If we have found a values in the left list which is larger then
-                // the pivot element and if we have found a value in the right list
-                // which is smaller then the pivot element then we exchange the
-                // values.
-                // As we are done we can increase i and j
-                comparisons++;
-                if (i <= j) {
-                    exchange(i, j);
-                    i++;
-                    j--;
-                }
+            while (numbers[i] < pivot) {
+                i++;
             }
-            // Recursion
-            if (low < j) {
-                quicksort(low, j);
+
+            while (numbers[j] > pivot) {
+                j--;
             }
-            if (i < high) {
-                quicksort(i, high);
+
+            comparisons++;
+            if (i <= j) {
+                exchange(i, j);
+                i++;
+                j--;
             }
         }
+        // Recursion
+        if (low < j) {
+            quicksort(low, j);
+        }
 
-        private static void exchange(int i, int j) {
-            int temp = numbers[i];
-            numbers[i] = numbers[j];
-            numbers[j] = temp;
+        if (i < high) {
+            quicksort(i, high);
         }
     }
 
+    private static void exchange(int i, int j) {
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
 
+    ////TESTING////
+    public static void TestSortingAlgorithm() {
+         int[] arr = new int[200];
+         RandArray(arr);
+         int[] bSortArr = arr;
+         int[] sSortArr = arr;
+         int[] iSortArr = arr;
+         int[] mSortArr = arr;
+         int[] qSortArr = arr;
+         
+        long problemSize = 100000000;
+        System.out.println(" \n ProblemSize" + "        Seconds");
+        for (int count = 0; count < 8; count++) {
+            //final long startTime = System.nanoTime();
+            long startTime = System.currentTimeMillis();
+            // the start of clock
+            int work = 1;
+            for (long x = 0; x < problemSize; x++) {
+                work += 1;
+                work -= 1;
+            }
+           
+            BubbleSort(bSortArr);
+            SelectionSort(sSortArr);
+            InsertionSort(iSortArr);
+            MergeSort(mSortArr);
+            Quicksort(qSortArr);
+            
+            //the end of clock
+            long endTime = System.currentTimeMillis();
+            //final long endTime = System.nanoTime();
+            //long elapsed = endTime- startTime;
+            System.out.printf("%12d  %.3f \n", problemSize, (float) (endTime - startTime) / 1000);
+            problemSize *= 2;
+            
+        }
+    }
+
+    //Generate random array
+    private static int[] RandArray(int size[]) {
+        Random generator = new Random();
+
+        //populate array with random numbers
+        for (int i = 0; i < size.length; i++) {
+            size[i] = generator.nextInt(2000);
+        }
+
+        //Print unsorted array
+        System.out.print("Unsorted array \n");
+        for (int i = 0; i < size.length; i++) {
+            System.out.print(size[i] + " ");
+        }
+        return size;
+    }
+}

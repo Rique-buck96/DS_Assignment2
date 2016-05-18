@@ -147,6 +147,7 @@ public class UnitList {
         }
     }
 
+    //Traverse in descending order
     public static void SortDescendingOrder(UnitList u_list) {
         if (u_list == null || u_list.next == null) return;
 
