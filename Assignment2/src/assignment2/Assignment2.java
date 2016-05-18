@@ -5,12 +5,7 @@
  */
 package assignment2;
 import static assignment2.Sorting.BubbleSort;
-import static assignment2.Sorting.InsertionSort;
-import static assignment2.Sorting.MergeSort;
-import static assignment2.Sorting.Quicksort;
-import static assignment2.Sorting.SelectionSort;
-import static assignment2.UnitList.BuildLinkedList;
-import java.util.Random;
+import static assignment2.Sorting.TestSortingAlgorithm;
 
 /**
  *
@@ -25,11 +20,7 @@ public class Assignment2 {
         // TODO code application logic here
 
         //Task 3
-       randArr(200);
-       randArr(400);
-       randArr(800);
-       randArr(1000);
-       randArr(2000);
+       TestSortingAlgorithm(2000);
        
         //Task 5
        //BuildLinkedList();

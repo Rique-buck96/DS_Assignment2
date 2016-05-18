@@ -5,7 +5,6 @@
  */
 package assignment2;
 
-import static assignment2.Assignment2.comparisons;
 import java.util.Random;
 
 /**
@@ -14,15 +13,12 @@ import java.util.Random;
  */
 public class Sorting {
 
-    private int[] array;
-    private int[] tempMergArr;
-    private int length;
     private static int[] numbers;
     private static int number;
+    public static int comparisons;
 
     public static void BubbleSort(int[] num) {
         int temp;
-        int comparisons = 0;
         for (int i = 0; i < num.length; i++) {
 
             for (int j = 1; j < num.length; j++) {
@@ -35,15 +31,13 @@ public class Sorting {
                 }
             }
         }
-        System.out.print("Sorted Array:\n" + num);
-        System.out.print("\nComparisons:" + comparisons + "\n");
     }
 
     public static void SelectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int index = i;
             for (int j = i + 1; j < arr.length; j++) {
-
+                comparisons++;
                 if (arr[j] < arr[index]) {
                     index = j;
 
@@ -53,10 +47,11 @@ public class Sorting {
             int smallerNumber = arr[index];
             arr[index] = arr[i];
             arr[i] = smallerNumber;
-        }
+        } 
     }
 
     public static void InsertionSort(int[] input) {
+     
         int temp;
         for (int i = 1; i < input.length; i++) {
             for (int j = i; j > 0; j--) {
@@ -69,10 +64,11 @@ public class Sorting {
                 }
             }
         }
+       
     }
 
     public static void MergeSort(int[] list) {
-
+        
         if (list.length <= 1) {
             return;
         }
@@ -89,10 +85,10 @@ public class Sorting {
 
         // Merge the halves together, overwriting the original array
         merge(first, second, list);
-
     }
 
     private static void merge(int[] first, int[] second, int[] result) {
+        
         // Merge both halves into the result array
         // Next element to consider in the first array
         int iFirst = 0;
@@ -118,6 +114,7 @@ public class Sorting {
         // copy what's left
         System.arraycopy(first, iFirst, result, j, first.length - iFirst);
         System.arraycopy(second, iSecond, result, j, second.length - iSecond);
+        
     }
 
     public static void Quicksort(int[] values) {
@@ -131,6 +128,7 @@ public class Sorting {
     }
 
     private static void quicksort(int low, int high) {
+        int comparisons = 0;
         int i = low, j = high;
         // Get the pivot element from the middle of the list
         int pivot = numbers[low + (high - low) / 2];
@@ -161,6 +159,7 @@ public class Sorting {
         if (i < high) {
             quicksort(i, high);
         }
+        
     }
 
     private static void exchange(int i, int j) {
@@ -170,41 +169,73 @@ public class Sorting {
     }
 
     ////TESTING////
-    public static void TestSortingAlgorithm() {
-         int[] arr = new int[200];
+    public static void TestSortingAlgorithm(int size) {
+         int[] arr = new int[size];
          RandArray(arr);
          int[] bSortArr = arr;
          int[] sSortArr = arr;
          int[] iSortArr = arr;
          int[] mSortArr = arr;
          int[] qSortArr = arr;
+         int[] bstArr = arr;
+         BST bst = new BST();
          
-        long problemSize = 100000000;
-        System.out.println(" \n ProblemSize" + "        Seconds");
-        for (int count = 0; count < 8; count++) {
-            //final long startTime = System.nanoTime();
-            long startTime = System.currentTimeMillis();
-            // the start of clock
-            int work = 1;
-            for (long x = 0; x < problemSize; x++) {
-                work += 1;
-                work -= 1;
-            }
+         for(int i = 0; i < bstArr.length; i++)
+             bst.insert(bstArr[i]);
+         
+        long startTime = System.currentTimeMillis();
            
             BubbleSort(bSortArr);
+            System.out.print("\nBubble Sort");
+            CountComparisons();
+            
+        long endTime = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime - startTime) + "\n");
+        
+        long startTime2 = System.currentTimeMillis();
+        
             SelectionSort(sSortArr);
+             System.out.print("\nSelection Sort");
+            CountComparisons();
+            
+         long endTime2 = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime2 - startTime2) + "ms\n");
+        
+         long startTime3 = System.currentTimeMillis();
+         
             InsertionSort(iSortArr);
+            System.out.print("\nInsertion Sort");
+            CountComparisons();
+            
+         long endTime3 = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime3 - startTime3) + "\n"); 
+        
+         long startTime4 = System.currentTimeMillis();
+         
             MergeSort(mSortArr);
+             System.out.print("\nMerge Sort");
+            CountComparisons();
+            
+             long endTime4 = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime4 - startTime4) + "\n");
+        
+         long startTime5 = System.currentTimeMillis();
+         
             Quicksort(qSortArr);
+             System.out.print("\nQuick Sort");
+            CountComparisons();
             
-            //the end of clock
-            long endTime = System.currentTimeMillis();
-            //final long endTime = System.nanoTime();
-            //long elapsed = endTime- startTime;
-            System.out.printf("%12d  %.3f \n", problemSize, (float) (endTime - startTime) / 1000);
-            problemSize *= 2;
-            
-        }
+           long endTime5 = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime5 - startTime5) + "\n");  
+        
+        long startTime6 = System.currentTimeMillis();
+        
+        bst.printInorder();
+         System.out.print("\nInOrder Sort");
+        CountComparisons();
+        
+         long endTime6 = System.currentTimeMillis();
+        System.out.print("Time :" + (endTime6 - startTime6) + "\n");  
     }
 
     //Generate random array
@@ -216,11 +247,11 @@ public class Sorting {
             size[i] = generator.nextInt(2000);
         }
 
-        //Print unsorted array
-        System.out.print("Unsorted array \n");
-        for (int i = 0; i < size.length; i++) {
-            System.out.print(size[i] + " ");
-        }
         return size;
+    }
+    
+    private static void CountComparisons(){
+        System.out.print("\nComparisons: " + comparisons + "\n");
+        //comparisons = 0;
     }
 }

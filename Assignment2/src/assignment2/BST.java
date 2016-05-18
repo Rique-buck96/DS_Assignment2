@@ -5,7 +5,7 @@
  */
 package assignment2;
 
-import static assignment2.Assignment2.comparisons;
+import static assignment2.Sorting.comparisons;
 
 /**
  *
@@ -107,7 +107,7 @@ public class BST {
      if ( currRoot == null ) return;
      
      printInOrderRec(currRoot.left);
-     System.out.print(currRoot.value+" ");
+     //System.out.print(currRoot.value+" ");
      printInOrderRec(currRoot.right);
    }
    
